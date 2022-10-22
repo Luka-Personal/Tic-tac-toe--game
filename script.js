@@ -20,6 +20,7 @@ const init = function () {
     el.classList.remove(`p-1`);
   });
   gameEventBOX.style.pointerEvents = `all`;
+  resetBTN.style.pointerEvents = `all`;
 };
 // ########################################################################################################
 // function to check if p-0 or p-1 class is present in (checkedEventBOX)
@@ -37,6 +38,7 @@ const callAllFunc = () => {
 const endGame = () => {
   gameEventBOX.style.boxShadow = `0 0 30px 10px rgba(0, 0, 0, 0.7)`;
   gameEventBOX.style.pointerEvents = `none`;
+  resetBTN.style.pointerEvents = `all`;
   if (fillcounter === 9) activeHeading.textContent = `DRAW`;
 };
 // ########################################################################################################
