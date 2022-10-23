@@ -11,7 +11,7 @@ body {
 }
 .heading {
   position: absolute;
-  top: 5rem;
+  top: 3rem;
   font-size: 3rem;
   width: 23rem;
   text-align: center;
@@ -20,16 +20,16 @@ body {
 }
 button {
   position: absolute;
-  top: 5rem;
   font-size: 2rem;
   padding: 1rem 2rem;
   border: none;
-  transition: all 1s;
+  transition: color, background-color 1s;
   box-shadow: 0 0 2.5rem 0.2rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
   background-color: #fff;
-  right: 0;
-  top: -9.5rem;
+  left: 50%;
+  top: 7rem;
+  transform: translateX(-50%);
 }
 button:hover {
   background-color: #000;

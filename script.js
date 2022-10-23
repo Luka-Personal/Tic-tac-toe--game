@@ -6,12 +6,12 @@ const resetBTN = document.querySelector(`button`);
 // ########################################################################################################
 // declarations
 let activePlayer = 0;
-let fillcounter = 0;
+let winnerState = 0;
+let boxFilled = 0;
 // ########################################################################################################
 // init
 const init = function () {
   gameEventBOX.style.boxShadow = `0 0 30px 10px rgba(0, 0, 0, 0.2)`;
-  fillcounter = 0;
   activeHeading.textContent = `Active Player: 0`;
   activePlayer = 0;
   checkedEventBOX.forEach((el) => {
@@ -20,63 +20,72 @@ const init = function () {
     el.classList.remove(`p-1`);
   });
   gameEventBOX.style.pointerEvents = `all`;
-  resetBTN.style.pointerEvents = `all`;
+  boxFilled = 0;
+  winnerState = 0;
 };
 // ########################################################################################################
 // function to check if p-0 or p-1 class is present in (checkedEventBOX)
 const checkClass = (num, pl) => checkedEventBOX[num].classList.contains(pl);
 // ########################################################################################################
-// call all functions(and counter) related to winner checking
+// call all functions
 const callAllFunc = () => {
-  fillcounter++; // if this gets to 9, that means all box-es in 3x3 square is filled :)
-  displayGame(activePlayer);
+  boxFilled++;
+  displayActive();
   checkWinner(`p-0`);
   checkWinner(`p-1`);
 };
 // ########################################################################################################
-// end the game(runs after winning)
+// end the game
 const endGame = () => {
   gameEventBOX.style.boxShadow = `0 0 30px 10px rgba(0, 0, 0, 0.7)`;
   gameEventBOX.style.pointerEvents = `none`;
   resetBTN.style.pointerEvents = `all`;
-  if (fillcounter === 9) activeHeading.textContent = `DRAW`;
 };
 // ########################################################################################################
 // display game state
-const displayGame = (state) => {
-  if (state !== 3) {
-    activeHeading.textContent = `Active Player: ${activePlayer ? 0 : 1}`;
+const displayActive = () => {
+  activeHeading.textContent = `Active Player: ${activePlayer ? 0 : 1}`;
+};
+const displayWinner = () => {
+  if (boxFilled === 9 && winnerState === 0) {
+    activeHeading.textContent = `DRAW`;
   } else {
     activeHeading.textContent = `Winner Player: ${activePlayer}`;
-    endGame();
   }
+  endGame();
 };
 // ########################################################################################################
 // self explanatory, checks the winner player
 const checkWinner = function (pl) {
-  console.log(fillcounter);
-  if (fillcounter !== 9) {
-    if (checkClass(0, pl) && checkClass(1, pl) && checkClass(2, pl)) {
-      displayGame(3);
-    } else if (checkClass(3, pl) && checkClass(4, pl) && checkClass(5, pl)) {
-      displayGame(3);
-    } else if (checkClass(6, pl) && checkClass(7, pl) && checkClass(8, pl)) {
-      displayGame(3);
-    } else if (checkClass(0, pl) && checkClass(3, pl) && checkClass(6, pl)) {
-      displayGame(3);
-    } else if (checkClass(1, pl) && checkClass(4, pl) && checkClass(7, pl)) {
-      displayGame(3);
-    } else if (checkClass(2, pl) && checkClass(5, pl) && checkClass(8, pl)) {
-      displayGame(3);
-    } else if (checkClass(0, pl) && checkClass(4, pl) && checkClass(8, pl)) {
-      displayGame(3);
-    } else if (checkClass(2, pl) && checkClass(4, pl) && checkClass(6, pl)) {
-      displayGame(3);
-    }
-  } else {
-    endGame(fillcounter);
+  if (checkClass(0, pl) && checkClass(1, pl) && checkClass(2, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(3, pl) && checkClass(4, pl) && checkClass(5, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(6, pl) && checkClass(7, pl) && checkClass(8, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(0, pl) && checkClass(3, pl) && checkClass(6, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(1, pl) && checkClass(4, pl) && checkClass(7, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(2, pl) && checkClass(5, pl) && checkClass(8, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(0, pl) && checkClass(4, pl) && checkClass(8, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (checkClass(2, pl) && checkClass(4, pl) && checkClass(6, pl)) {
+    displayWinner();
+    winnerState = 1;
+  } else if (boxFilled === 9) {
+    displayWinner();
   }
 };
+
 // ########################################################################################################
 // add event listener to all 9 boxes
 gameEventBOX.addEventListener(`click`, function (e) {
