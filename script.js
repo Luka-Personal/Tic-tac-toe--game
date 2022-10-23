@@ -85,7 +85,6 @@ const checkWinner = function (pl) {
     displayWinner();
   }
 };
-
 // ########################################################################################################
 // add event listener to all 9 boxes
 gameEventBOX.addEventListener(`click`, function (e) {

@@ -1,6 +1,10 @@
+:root {
+  --border-width: 0.4rem;
+}
 * {
   padding: 0;
   margin: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 html {
@@ -16,6 +20,8 @@ body {
   width: 23rem;
   text-align: center;
   left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 button {
@@ -23,12 +29,17 @@ button {
   font-size: 2rem;
   padding: 1rem 2rem;
   border: none;
+  -webkit-transition: color, background-color 1s;
+  -o-transition: color, background-color 1s;
   transition: color, background-color 1s;
+  -webkit-box-shadow: 0 0 2.5rem 0.2rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 2.5rem 0.2rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
   background-color: #fff;
   left: 50%;
   top: 7rem;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 button:hover {
@@ -38,8 +49,14 @@ button:hover {
 .section-game {
   height: 100vh;
   min-height: 83rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   padding: 0 2rem;
 }
@@ -49,70 +66,106 @@ button:hover {
   width: 100%;
   max-height: 55rem;
   height: 100%;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
   transition: all 1s;
+  -webkit-box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.2);
 }
+.game-main > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.game-main > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+.game-main > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+.game-main > *:nth-child(4) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+.game-main > *:nth-child(5) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+}
+.game-main > *:nth-child(6) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+}
+.game-main > *:nth-child(7) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+.game-main > *:nth-child(8) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+}
+.game-main > *:nth-child(9) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+}
 .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .sqr-1 {
-  /* background-color: blue; */
-  border-right: 0.4rem black solid;
-  border-bottom: 0.4rem black solid;
+  border-right: var(--border-width) black solid;
+  border-bottom: var(--border-width) black solid;
 }
 .sqr-2 {
-  /* background-color: yellow; */
-  border-left: 0.4rem black solid;
-  border-right: 0.4rem black solid;
-  border-bottom: 0.4rem black solid;
+  border-left: var(--border-width) black solid;
+  border-right: var(--border-width) black solid;
+  border-bottom: var(--border-width) black solid;
 }
 .sqr-3 {
-  /* background-color: orange; */
-  border-left: 0.4rem black solid;
-  border-bottom: 0.4rem black solid;
+  border-left: var(--border-width) black solid;
+  border-bottom: var(--border-width) black solid;
 }
 .sqr-4 {
-  /* background-color: magenta; */
-  border-top: 0.4rem black solid;
-  border-right: 0.4rem black solid;
-  border-bottom: 0.4rem black solid;
+  border-top: var(--border-width) black solid;
+  border-right: var(--border-width) black solid;
+  border-bottom: var(--border-width) black solid;
 }
 .sqr-5 {
-  /* background-color: red; */
-  border: 0.4rem black solid;
+  border: var(--border-width) black solid;
 }
 .sqr-6 {
-  /* background-color: cornflowerblue; */
-  border-top: 0.4rem black solid;
-  border-left: 0.4rem black solid;
-  border-bottom: 0.4rem black solid;
+  border-top: var(--border-width) black solid;
+  border-left: var(--border-width) black solid;
+  border-bottom: var(--border-width) black solid;
 }
 .sqr-7 {
-  /* background-color: lightseagreen; */
-  border-top: 0.4rem black solid;
-  border-right: 0.4rem black solid;
+  border-top: var(--border-width) black solid;
+  border-right: var(--border-width) black solid;
 }
 .sqr-8 {
-  /* background-color: aqua; */
-  border-top: 0.4rem black solid;
-  border-right: 0.4rem black solid;
-  border-left: 0.4rem black solid;
+  border-top: var(--border-width) black solid;
+  border-right: var(--border-width) black solid;
+  border-left: var(--border-width) black solid;
 }
 .sqr-9 {
-  /* background-color: palevioletred; */
-  border-top: 0.4rem black solid;
-  border-left: 0.4rem black solid;
+  border-top: var(--border-width) black solid;
+  border-left: var(--border-width) black solid;
 }
 .icons {
   pointer-events: none;
   width: 17rem;
   height: 17rem;
-}
-.val {
-  display: none;
 }
