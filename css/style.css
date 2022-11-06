@@ -15,9 +15,9 @@ body {
 }
 .heading {
   position: absolute;
-  top: 3rem;
+  top: 5%;
   font-size: 3rem;
-  width: 23rem;
+  min-width: 23rem;
   text-align: center;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -37,7 +37,7 @@ button {
   cursor: pointer;
   background-color: #fff;
   left: 50%;
-  top: 7rem;
+  top: 12%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
