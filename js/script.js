@@ -3,6 +3,7 @@ const gameEventBOX = document.querySelector(`.game-main`);
 const checkedEventBOX = document.querySelectorAll(`.box`);
 const activeHeading = document.querySelector(`.heading`);
 const resetBTN = document.querySelector(`button`);
+
 // ########################################################################################################
 class App {
   #activePlayer = 0;
@@ -36,6 +37,7 @@ class App {
   }
   _gameLogic(e) {
     const targetBOX = e.target.closest(`.box`);
+    if (!targetBOX) return;
     // we use these two states, to check if box has already been checked(or crossed)
     const stateOne = !e.target.classList.contains(`p-0`);
     const stateTwo = !e.target.classList.contains(`p-1`);
@@ -60,27 +62,35 @@ class App {
   _winnerLogic(pl) {
     if (this._checkClass(0, pl) && this._checkClass(1, pl) && this._checkClass(2, pl)) {
       this._displayGameState();
+      this._colorWinner(0, 0, 1, 2);
       this.#winnerState = 1;
     } else if (this._checkClass(3, pl) && this._checkClass(4, pl) && this._checkClass(5, pl)) {
       this._displayGameState();
+      this._colorWinner(0, 3, 4, 5);
       this.#winnerState = 1;
     } else if (this._checkClass(6, pl) && this._checkClass(7, pl) && this._checkClass(8, pl)) {
       this._displayGameState();
+      this._colorWinner(0, 6, 7, 8);
       this.#winnerState = 1;
     } else if (this._checkClass(0, pl) && this._checkClass(3, pl) && this._checkClass(6, pl)) {
       this._displayGameState();
+      this._colorWinner(90, 0, 3, 6);
       this.#winnerState = 1;
     } else if (this._checkClass(1, pl) && this._checkClass(4, pl) && this._checkClass(7, pl)) {
       this._displayGameState();
+      this._colorWinner(90, 1, 4, 7);
       this.#winnerState = 1;
     } else if (this._checkClass(2, pl) && this._checkClass(5, pl) && this._checkClass(8, pl)) {
       this._displayGameState();
+      this._colorWinner(90, 2, 5, 8);
       this.#winnerState = 1;
     } else if (this._checkClass(0, pl) && this._checkClass(4, pl) && this._checkClass(8, pl)) {
       this._displayGameState();
+      this._colorWinner(45, 0, 4, 8);
       this.#winnerState = 1;
     } else if (this._checkClass(2, pl) && this._checkClass(4, pl) && this._checkClass(6, pl)) {
       this._displayGameState();
+      this._colorWinner(-45, 2, 4, 6);
       this.#winnerState = 1;
     } else if (this.#boxFilled === 9) {
       this._displayGameState();
@@ -97,10 +107,11 @@ class App {
   _checkClass(num, pl) {
     return checkedEventBOX[num].classList.contains(pl);
   }
-  _endGame() {
-    gameEventBOX.style.boxShadow = `0 0 30px 10px rgba(0, 0, 0, 0.7)`;
-    gameEventBOX.style.pointerEvents = `none`;
-    resetBTN.style.pointerEvents = `all`;
+  _colorWinner(deg, ...nums) {
+    nums.forEach((el) => {
+      checkedEventBOX[el].children[0].style.transform = `scale(1.4)`;
+      checkedEventBOX[el].innerHTML += `<div class="line-main line${deg}"></div>`;
+    });
   }
 }
 const app = new App();
